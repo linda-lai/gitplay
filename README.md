@@ -1,8 +1,5 @@
 # Git It!
-
-## References
-https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing
-https://github.com/wprig/wprig/wiki/How-to-squash-commits
+Chilling out, maxin' and relaxing all cool with Git.
 
 ### Staging
 To add code to staging in partials rather than the entire file.
