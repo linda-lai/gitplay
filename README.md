@@ -54,6 +54,15 @@ If commits have been pushed and need to be reverted.
 git reset --hard fa74044346b1248d9f176c87dc457ceceea9024a
 ```
 
+### Caching
+Remove all files from Git cache:
+```
+git rm -r --cached .
+```
+
+* Update `.gitignore`
+* `git add` files to be staged
+
 ### Graph
 ```
 git log --graph
