@@ -7,10 +7,10 @@ https://github.com/wprig/wprig/wiki/How-to-squash-commits
 ### Staging
 To add code to staging in partials rather than the entire file.
 
-y - stage this hunk
-n - do not stage this hunk
-a - stage this and all the remaining hunks in the file
-d - do not stage this hunk nor any of the remaining hunks in the file
+* `y` - stage this hunk
+* `n` - do not stage this hunk
+* `a` - stage this and all the remaining hunks in the file
+* `d` - do not stage this hunk nor any of the remaining hunks in the file
 
 ```
 git add -p
@@ -38,7 +38,7 @@ pick e5266359e Add check for Support plan type to hide Salesforce integration on
 pick 892b8cfad Initial logic to identity Essentials plan in Support
 pick b75eaef89 Testing routes and enabledChecks
 pick a179b26b9 pass accountProducts down to enable-check.ts
-pick 7251e57a5 Conditional rendering based on enabled check for isNotEssentialPlan working for CAChrome nav and Platform feature card
+pick 7251e57a5 Conditional rendering based on enabled check for isNotEssentialPlan
 ```
 
 In Vim:
