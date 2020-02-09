@@ -1,5 +1,14 @@
-# Git It!
+# Git It! <!-- omit in toc -->
 Chilling out, maxin' and relaxing all cool with Git.
+
+## Contents <!-- omit in toc -->
+- [Staging](#staging)
+- [Rebasing](#rebasing)
+  - [Interactive Rebasing](#interactive-rebasing)
+- [Revert](#revert)
+- [Commit Messages](#commit-messages)
+- [Caching](#caching)
+- [Graph](#graph)
 
 ### Staging
 To add code to staging in partials rather than the entire file.
@@ -50,6 +59,16 @@ If commits have been pushed and need to be reverted.
 ```
 git reset --hard fa74044346b1248d9f176c87dc457ceceea9024a
 ```
+
+### Commit Messages
+* `FIRST`: Initial commit
+* `DOC`: Add link to deployment video
+* `FIX`: Add condition before triggering last signin request
+* `CONFIG`: Add npm script fo configuring environment variables from .env
+* `NEW`: Add attendance feature to frontend and backend
+* `QUALITY`: Move passport logic to config file
+* `LOOKS`: Add styling for code snippets in .md files
+* `ENHANCE`: Add dynamic title for all pages
 
 ### Caching
 Remove all files from Git cache:
