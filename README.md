@@ -81,7 +81,17 @@ git reset --hard fa74044346b1248d9f176c87dc457ceceea9024a
 * `LOOKS`: Add styling for code snippets in .md files
 * `ENHANCE`: Add dynamic title for all pages
 
+Amend last commit message after pushing:
+```
+git commit --amend -m "fix: Make test command visible in ZOAAS"
+```
+
 ### Caching
+Remove a specific file from Git cache:
+```
+git rm [FILENAME] --cached
+```
+
 Remove all files from Git cache:
 ```
 git rm -r --cached .
