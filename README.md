@@ -5,6 +5,7 @@ Chilling out, maxin' and relaxing all cool with Git.
 - [Staging](#staging)
 - [Rebasing](#rebasing)
   - [Interactive Rebasing](#interactive-rebasing)
+- [Reset](#reset)
 - [Revert](#revert)
 - [Commit Messages](#commit-messages)
 - [Caching](#caching)
@@ -65,6 +66,16 @@ In Vim:
 * After all commits have been updated, type `wq` to write/save the changes and quit.
 * Use `git log` and `git status` to confirm current history.
 
+### Reset
+If local branch and remote origin/branch-name have diverged so much, with different commits respectively, that it doesn't make sense to try and resolve all the conflicts, we can reset the local branch to whatever is on origin.
+
+To do this, we'll need to fetch from the master, then checkout to the branch and run:
+```
+git reset --hard origin/branch-name
+```
+
+Further explanation is available [here](https://stackoverflow.com/questions/43037293/what-is-the-difference-between-git-pull-and-git-reset-hard-origin-branch/43037318#43037318) on Stack Overflow.
+
 ### Revert
 If commits have been pushed and need to be reverted.
 ```
@@ -81,7 +92,17 @@ git reset --hard fa74044346b1248d9f176c87dc457ceceea9024a
 * `LOOKS`: Add styling for code snippets in .md files
 * `ENHANCE`: Add dynamic title for all pages
 
+Amend last commit message after pushing:
+```
+git commit --amend -m "fix: Make test command visible in ZOAAS"
+```
+
 ### Caching
+Remove a specific file from Git cache:
+```
+git rm [FILENAME] --cached
+```
+
 Remove all files from Git cache:
 ```
 git rm -r --cached .
