@@ -37,6 +37,17 @@ Pull the latest changes to master.
 git rebase -i master
 ```
 
+You must rebase onto a particular commit.
+
+With a non-interactive rebase, if you supply a direct ancestor of the current commit then you aren't changing anything; with an interactive rebase you can edit commits after the commit that you are rebasing onto, even if the commit is a direct ancestor of your current commit but you do have to specify this commit that you want to edit onwards from.
+
+Without a commit range, `rebase -i` will show `noop` as the message and won't display any commits.
+To edit the last, say, 10 commits, use the following:
+
+```
+git rebase -i HEAD~10
+```
+
 This will show a list of commits, each commit starting with the word pick.
 
 ```
