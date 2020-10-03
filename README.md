@@ -1,27 +1,89 @@
-# Git It! <!-- omit in toc -->
+# Git <!-- omit in toc -->
 Chilling out, maxin' and relaxing all cool with Git.
 
-## Contents <!-- omit in toc -->
-- [Staging](#staging)
-- [Rebasing](#rebasing)
-  - [Interactive Rebasing](#interactive-rebasing)
-- [Reset](#reset)
-- [Revert](#revert)
-- [Commit Messages](#commit-messages)
-- [Caching](#caching)
-- [Graph](#graph)
+- [Conventional Commits](#conventional-commits)
+- [Tutorials](#tutorials)
+- [Helpful Commands](#helpful-commands)
+  - [Caching](#caching)
+  - [Commit Messages](#commit-messages)
+  - [Fetch & Pull](#fetch--pull)
+  - [Graph](#graph)
+  - [Rebasing](#rebasing)
+    - [Interactive Rebasing](#interactive-rebasing)
+  - [Reset](#reset)
+  - [Revert](#revert)
+  - [Staging](#staging)
+  - [Caching](#caching-1)
+  - [Stashing](#stashing)
 
-### Staging
-To add code to staging in partials rather than the entire file.
+## Conventional Commits
+* [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/): A specification for adding human and machine readable meaning to commit messages.
+* [Patterns for writing better git commit messages](https://dev.to/helderburato/patterns-for-writing-better-git-commit-messages-4ba0): Suggested patterns and ways of writing Git commit messages.
 
-* `y` - stage this hunk
-* `n` - do not stage this hunk
-* `a` - stage this and all the remaining hunks in the file
-* `d` - do not stage this hunk nor any of the remaining hunks in the file
+To write a standardised commit message, it should be structured as follows:
 
 ```
-git add -p
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer]
 ```
+
+The commit contains the following structural elements, to communicate intent to the consumers of your library:
+
+* `fix`: a commit of the type fix patches a bug in your codebase (this correlates with PATCH in semantic versioning).
+* `feat`: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in semantic versioning).
+* `BREAKING CHANGE`: a commit that has the text BREAKING CHANGE: at the beginning of its optional body or footer section introduces a breaking API change (correlating with MAJOR in semantic versioning). A breaking change can be part of commits of any type. e.g., a fix:, feat: & chore: types would all be valid, in addition to any other type.
+* Others: commit types other than `fix:` and `feat:` are recommend, for example `chore:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, and others. We also recommend improvement for commits that improve a current implementation without adding a new feature or fixing a bug. Notice these types are not mandated by the conventional commits specification, and have no implicit effect in semantic versioning (unless they include a BREAKING CHANGE, which is NOT recommended).
+* A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., `feat(parser): add ability to parse arrays`.
+
+## Tutorials
+* [Happy Git](https://happygitwithr.com/index.html): Using Git and GitHub with R, Rstudio, and R Markdown.
+
+
+## Helpful Commands
+### Caching
+Remove a specific file from Git cache:
+```
+git rm [FILENAME] --cached
+```
+
+Remove all files from Git cache:
+```
+git rm -r --cached .
+```
+
+* Update `.gitignore`
+* `git add` files to be staged
+
+### Commit Messages
+* `FIRST`: Initial commit
+* `DOC`: Add link to deployment video
+* `FIX`: Add condition before triggering last signin request
+* `CONFIG`: Add npm script fo configuring environment variables from .env
+* `NEW`: Add attendance feature to frontend and backend
+* `QUALITY`: Move passport logic to config file
+* `LOOKS`: Add styling for code snippets in .md files
+* `ENHANCE`: Add dynamic title for all pages
+
+Amend last commit message after pushing:
+```
+git commit --amend -m "fix: Make test command visible in ZOAAS"
+```
+
+### Fetch & Pull
+Fetch your latest changes onto a branch without having to do a merge commit, and apply your commits to the top of the remote tree.
+
+```
+git pull --rebase
+```
+
+### Graph
+```
+git log --graph
+```
+
 ### Rebasing
 To cancel a rebase: `git rebase --abort`.
 
@@ -82,15 +144,13 @@ If commits have been pushed and need to be reverted.
 git reset --hard fa74044346b1248d9f176c87dc457ceceea9024a
 ```
 
-### Commit Messages
-* `FIRST`: Initial commit
-* `DOC`: Add link to deployment video
-* `FIX`: Add condition before triggering last signin request
-* `CONFIG`: Add npm script fo configuring environment variables from .env
-* `NEW`: Add attendance feature to frontend and backend
-* `QUALITY`: Move passport logic to config file
-* `LOOKS`: Add styling for code snippets in .md files
-* `ENHANCE`: Add dynamic title for all pages
+### Staging
+To add code to staging in partials rather than the entire file.
+
+* `y` - stage this hunk
+* `n` - do not stage this hunk
+* `a` - stage this and all the remaining hunks in the file
+* `d` - do not stage this hunk nor any of the remaining hunks in the file
 
 Amend last commit message after pushing:
 ```
@@ -105,13 +165,27 @@ git rm [FILENAME] --cached
 
 Remove all files from Git cache:
 ```
-git rm -r --cached .
+git add -p
 ```
 
-* Update `.gitignore`
-* `git add` files to be staged
+### Stashing
+To apply multiple Git stashes at once (i.e. changes stashed using `git stash`), pop the first stash:
 
-### Graph
 ```
-git log --graph
+git stash pop
+```
+
+Temporarily commit the changes from the first stash:
+```
+git add . && git commit -m "WIP"
+```
+
+Pop the second stash:
+```
+git stash pop
+```
+
+Undo the temporary commit, but keeping the changes it introduced:
+```
+git reset --soft HEAD^
 ```
